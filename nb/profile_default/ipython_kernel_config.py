@@ -1,4 +1,8 @@
 c = get_config()
-c.IPKernelApp.exec_lines = ["import os as _os",  # On notebook startup, change
-                            "_os.chdir('..')"]   #+PWD to the project root.
-c.IPKernelApp.matplotlib = 'inline'              # Display figures inline
+# Act like code inside ipython notebooks is being executed from the project root.
+c.IPKernelApp.exec_lines = [
+    "import os as _os",
+    "_os.chdir('..')",
+    "import sys as _sys",
+    "_sys.path.append('./scripts')"
+]
