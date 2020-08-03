@@ -539,8 +539,9 @@ def genotype_plot(geno, savepath=None, width_per_s=0.4, height_per_g=0.1):
 def pi_plot(pi, savepath=None, width_per_s=0.4, height_per_n=0.05, pwr=1):
     n, s = pi.shape
     fig, ax = plt.subplots(figsize=(s * width_per_s, n * height_per_n))
-    ax.imshow(pi, vmin=0, vmax=1, aspect='auto',
-              norm=mpl.colors.PowerNorm(pwr))
+    ax.imshow(pi, aspect='auto',
+              norm=mpl.colors.PowerNorm(pwr, vmin=0, vmax=1),
+              interpolation='none')
     ax.set_xticks(range(s))
     ax.set_yticks([])
     if savepath is not None:
